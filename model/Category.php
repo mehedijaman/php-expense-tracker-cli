@@ -4,7 +4,9 @@ class Category{
         $data = "{$name}\n";
         file_put_contents('data/categories.txt', $data, FILE_APPEND);
         
-        print "Category Added Successfully";
+        print "------------------------------------------\n";
+        print "Category Added Successfully\n";
+        print "------------------------------------------\n";
     }
 
     public function fetchAll(): array{

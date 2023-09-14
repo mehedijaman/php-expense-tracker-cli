@@ -4,7 +4,9 @@ class Income{
         $data = "{$category} - {$amount}\n";
         file_put_contents('data/incomes.txt', $data, FILE_APPEND);
 
-        print "Income Added Successfully";
+        print "------------------------------------------\n";
+        print "Income Added Successfully\n";
+        print "------------------------------------------\n";
     }
 
     public function fetchAll(): array{
