@@ -18,4 +18,15 @@ class Expense{
     
         return $items;
     }
+
+    public function total(): int {
+        $total = 0;
+        $lines = file('./data/expenses.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach($lines as $line){
+            $array = explode('-', $line);
+            $total += (int) $array[1];
+        }
+    
+        return $total;
+    }
 }

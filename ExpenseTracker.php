@@ -28,9 +28,12 @@ class ExpenseTracker{
                     $this->viewCategories();
                     break;
                 case 7:
+                    $this->restInPocket();
+                    break;
+                case 0:
                     exit(0);
                 default:
-                    print "Invalid choice. Please select correct option";
+                    print "Invalid choice. Please select correct option\n";
                     break;                    
             }
         }
@@ -45,7 +48,8 @@ class ExpenseTracker{
         print "4. View Expenses\n";
         print "5. Add Category\n";
         print "6. View Categories\n";
-        print "7. Exit\n";
+        print "7. Rest in Pocket (RIP)\n";
+        print "0. Exit\n";
         print "================================\n";
     }
 
@@ -72,21 +76,24 @@ class ExpenseTracker{
     public function viewIncomes(): void{
         $obj = new Income();
         $incomes = $obj->fetchAll();
+        $total = $obj->total();
+
         print "------------ Income List -----------------\n";
         foreach ($incomes as $income){
             print $income.PHP_EOL;
         }
-        print "------------------------------------------\n";
+        print "--------- Total Income = {$total} ---------\n";
     }
 
     public function viewExpenses(): void{
         $obj = new Expense();
         $expenses = $obj->fetchAll();
+        $total = $obj->total();
         print "------------ Expense List -----------------\n";
         foreach ($expenses as $expense){
             print $expense.PHP_EOL;
         }
-        print "------------------------------------------\n";
+        print "-------- Total Expense = {$total} ----------\n";
     }
 
     public function addCategory(): void{
@@ -102,6 +109,20 @@ class ExpenseTracker{
         foreach ($categories as $category){
             print $category.PHP_EOL;
         }
+        print "------------------------------------------\n";
+    }
+
+    public function restInPocket() : void {
+        $objIncome = new Income();
+        $totalIncome = $objIncome->total();
+
+        $objExpense = new Expense();
+        $totalExpense = $objExpense->total();
+
+        $RIP = $totalIncome - $totalExpense;
+
+        print "------------------------------------------\n";
+        print "Rest in Pocket (RIP): {$RIP}\n";
         print "------------------------------------------\n";
     }
 }
