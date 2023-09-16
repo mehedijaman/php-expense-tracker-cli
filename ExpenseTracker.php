@@ -57,7 +57,7 @@ class ExpenseTracker{
         $input = readline('Enter Income (Format:: Category-Amount): ');
         $input = explode('-', $input);
         $category = $input[0];
-        $amount = $input[1];
+        $amount = (int) $input[1];
 
         $income = new Income();       
         $income->store($category, $amount);
@@ -67,7 +67,7 @@ class ExpenseTracker{
         $input = readline('Enter Expense (Format:: Category-Amount): ');
         $input = explode('-', $input);
         $category = $input[0];
-        $amount = $input[1];
+        $amount = (int) $input[1];
 
         $income = new Expense();       
         $income->store($category, $amount);
